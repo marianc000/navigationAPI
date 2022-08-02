@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+ 
+ 
+
+.row,a {
+    height: 1.3em;
+    color: black;
+}
+
+:is(.row,a)>div {
+    display: inline-block;
+    text-overflow: clip;
+    height: 100%;
+    vertical-align: middle;
+    border-bottom: 1px solid gainsboro;
+}
+
+:is(.row,a)>div:nth-child(1) {
+    width: 9%;
+}
+
+:is(.row,a)>div:nth-child(2) {
+    width: 7%;
+}
+
+:is(.row,a)>div:nth-child(3) {
+    width: 84%;
+    text-overflow: ellipsis;
+    overflow: clip;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.table {
+    text-align: left;
+    width: 94%;
+    margin: auto;
+}
+ 
+
+div#tableDiv {
+    text-align: center;
+ 
+}
+
+.row:first-child {
+    font-weight: bold;
+}
+
+#modalContentDiv {
+    text-align: justify;
+    padding: 1.5em;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 73%;
+    max-height: 70%;
+    overflow: auto;
+}
+ 
+label {
+    display: block;
+    margin-top: 1em;
+}
+
+textarea {
+    width: 100%;
+}
+
+.container>div {
+    display: none;
+    /* height: 200em; */
+    margin-top: 3em;
+}
+
+.controls {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5em;
+    background-color: white;
+}
+
+button {
+    margin: 0 0.5em;
+}
+
+div:empty::after {
+    content: '-';
+}
+
+#editDiv {
+    min-height: 200vh;
+}
