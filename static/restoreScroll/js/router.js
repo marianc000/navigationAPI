@@ -14,8 +14,7 @@ function onNavigate(e) {
     const callback = findHandler(e.destination.url);
 
     if (callback) {
-        navigation.updateCurrentEntry({ state: { scroll: scrollY } });
-        e.transitionWhile(callback());  
+        e.transitionWhile(callback(e.navigationType === 'push'));
     }
 }
 
@@ -27,10 +26,9 @@ function findHandler(url) {
     const path = url.replace(document.baseURI, '').split('?')[0]; // absolute to relative without parameters
     const handler = handlers.find(o => o.route.test(path));
     if (handler)
-        return () => {
-           requestAnimationFrame(() => { 
-                handler.callback(...argumentsInUrl(handler.route, path));
-                document.scrollingElement.scrollTop = navigation.currentEntry.getState()?.scroll || 0;
-           });
+        return (resetScroll) => {
+            handler.callback(...argumentsInUrl(handler.route, path));
+            if (resetScroll)
+                setTimeout(() => document.scrollingElement.scrollTop = 0);
         }
 }
