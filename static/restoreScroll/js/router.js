@@ -7,7 +7,7 @@ export function addRoute(route, callback) {
 
 export function start() {
     navigation.addEventListener('navigate', onNavigate);
-    navigation.navigate(location.href);
+    location.assign(location.href);
 }
 
 function onNavigate(e) {

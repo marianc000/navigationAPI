@@ -4,8 +4,6 @@ const div = editDiv;
 const inputs = [...div.querySelectorAll('[name]')];
 const textArea = inputs.find(i => i.tagName === 'TEXTAREA');
 
-console.log(textArea);
-
 export function renderEdit(tag) {
     showDiv(div);
     textArea.style.height = null; // to resize after save
