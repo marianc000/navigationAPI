@@ -27,8 +27,9 @@ function findHandler(url) {
     const handler = handlers.find(o => o.route.test(path));
     if (handler)
         return (resetScroll) => {
-            handler.callback(...argumentsInUrl(handler.route, path));
             if (resetScroll)
                 setTimeout(() => document.scrollingElement.scrollTop = 0);
+            return handler.callback(...argumentsInUrl(handler.route, path));
+
         }
 }

@@ -46,7 +46,7 @@ body {
 
 div#tableDiv {
     text-align: center;
- 
+    /* min-height: 2117px; */
 }
 
 .row:first-child {

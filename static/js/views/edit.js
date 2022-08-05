@@ -9,7 +9,7 @@ console.log(textArea);
 export function renderEdit(tag) {
     showDiv(div);
     textArea.style.height = null; // to resize after save
-    fetch('/api/' + tag).then(r => r.json())
+    return fetch('/api/' + tag).then(r => r.json())
         .then(data => {
             inputs.forEach(e => e.value = data[e.name]);
             requestAnimationFrame(() => textArea.style.height = (textArea.scrollHeight + 12) + "px");
@@ -27,7 +27,7 @@ saveBtn.addEventListener("click", save);
 function save() {
     const data = {};
     inputs.forEach(e => data[e.name] = e.value);
-    fetch('/api', {
+    return fetch('/api', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
