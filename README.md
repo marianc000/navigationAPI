@@ -1,4 +1,4 @@
-# Sign in with Google into Node.js-based web applications
-Easy session management with Express and Node.js
+# A simple and powerful router based on the modern API for client-side routing
+Let’s explore the newest API for straightforward development of single-page applications
 
-Sample code for my post https://marian-caikovski.medium.com/sign-in-with-google-into-node-js-based-web-applications-c0aee3082df9 about use of modern Sign in with Google and One Tap button for authentication in Node.js web applications
+Sample code for my post https://marian-caikovski.medium.com/a-simple-and-powerful-router-based-on-the-modern-api-for-client-side-routing-b40e9f6eb5bd exploring modern client-side routing
