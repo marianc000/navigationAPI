@@ -14,7 +14,13 @@ function onNavigate(e) {
     const callback = findHandler(e.destination.url);
 
     if (callback) {
-        e.transitionWhile(callback(e.navigationType === 'push'));
+        e.intercept({
+            async handler() {
+                await callback();
+                if (e.navigationType === 'push')
+                    document.scrollingElement.scrollTop = 0
+            }
+        });
     }
 }
 
@@ -26,10 +32,5 @@ function findHandler(url) {
     const path = url.replace(document.baseURI, '').split('?')[0]; // absolute to relative without parameters
     const handler = handlers.find(o => o.route.test(path));
     if (handler)
-        return (resetScroll) => {
-            if (resetScroll)
-                setTimeout(() => document.scrollingElement.scrollTop = 0);
-            return handler.callback(...argumentsInUrl(handler.route, path));
-
-        }
+        return () => handler.callback(...argumentsInUrl(handler.route, path));
 }

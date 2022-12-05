@@ -14,7 +14,12 @@ function onNavigate(e) {
     const callback = findHandler(e.destination.url);
 
     if (callback) {
-        e.transitionWhile(callback());
+        // e.transitionWhile(callback());
+        e.intercept({
+            async handler() {
+                await callback();
+            }
+        });
     }
 }
 
